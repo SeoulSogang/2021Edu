@@ -1,0 +1,7 @@
+1) geth -–networkid 1234 -–datadir [노드1위치] -–rpc -–rpcport 8545 --rpcaddr “0.0.0.0” -–rpccorsdomain ”*” –rpcapi “admin,db,eth,debug,miner,net,shh,txpool,personal,web3” -–port 30303 -–allow-insecure-unlock console 
+
+2) geth -–networkid 1234 -–datadir [노드2위치] -–rpc -–rpcport 8546 --rpcaddr “0.0.0.0” -–rpccorsdomain ”*” –rpcapi “admin,db,eth,debug,miner,net,shh,txpool,personal,web3” -–port 30304 -–ipcdisable -–allow-insecure-unlock console 
+
+3) geth -–networkid 1234 -–datadir [노드3위치] -–rpc -–rpcport 8547 --rpcaddr “0.0.0.0” -–rpccorsdomain ”*” –rpcapi “admin,db,eth,debug,miner,net,shh,txpool,personal,web3” -–port 30305 -–ipcdisable -–allow-insecure-unlock console 
+
+4) geth -–networkid 1234 -–datadir [노드4위치] -–rpc -–rpcport 8548 --rpcaddr “0.0.0.0” -–rpccorsdomain ”*” –rpcapi “admin,db,eth,debug,miner,net,shh,txpool,personal,web3” -–port 30306 -–ipcdisable -–allow-insecure-unlock console 
