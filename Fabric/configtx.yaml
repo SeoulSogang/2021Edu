@@ -11,67 +11,65 @@ Capabilities:
     V1_3: false
     V1_2: false
     V1_1: false
-  
+
 Organizations:
  - &OrdererOrg0
-     Name: OrdererOrg0MSP
+     Name: Orderer0MSP
      ID: OrdererOrg0MSP
      MSPDir: crypto-config/ordererOrganizations/ordererorg0/msp
      Policies: &OrdererorgPolicies
        Readers:
          Type: Signature
-         Rule: “OR(‘OrdererOrg0MSP.member’)”
+         Rule: "OR('OrdererOrg0MSP.member')"
        Writers:
          Type: Signature
-         Rule: “OR(‘OrdererOrg0MSP.member’)”
+         Rule: "OR('OrdererOrg0MSP.member')"
        Admins:
          Type: Signature
-         Rule: “OR(‘OrdererOrg0MSP.admin’)”
+         Rule: "OR('OrdererOrg0MSP.admin')"
  - &Org0
-     Name: Org0MSP
+     Name: Org0
      ID: Org0MSP
-
      MSPDir: crypto-config/peerOrganizations/org0/msp
      AnchorPeers:
-         - Host: 10.0.1.XX (Peer 주소)
+         - Host: 10.0.1.41
            Port: 7051
      Policies: &Org0Policies
       Readers:
          Type: Signature
-         Rule: “OR(‘Org0MSP.member’)”
+         Rule: "OR('Org0MSP.member')"
       Writers:
          Type: Signature
-         Rule: “OR(‘Org0MSP.member’)”
+         Rule: "OR('Org0MSP.member')"
       Admins:
          Type: Signature
-         Rule: “OR(‘Org0MSP.admin’)”
+         Rule: "OR('Org0MSP.admin')"
 
 Orderer: &OrdererDefaults
     OrdererType: kafka
     Addresses:
-        - 10.0.1.XX:7050 (Orderer 주소)
+        - 10.0.1.61:7050
     Policies:
       Readers:
          Type: ImplicitMeta
-         Rule: “ANY Readers”
+         Rule: "ANY Readers"
       Writers:
          Type: ImplicitMeta
-         Rule: “ANY Writers”
+         Rule: "ANY Writers"
       Admins:
          Type: ImplicitMeta
-         Rule: “MAJORITY Admins”
+         Rule: "MAJORITY Admins"
       BlockValidation:
          Type: ImplicitMeta
-         Rule: “ANY Writers”
+         Rule: "ANY Writers"
     BatchTimeout: 1s
-
     BatchSize:
-       MaxMessageCount: 30       
-       AbsoluteMaxBytes: 99 MB       
+       MaxMessageCount: 30
+       AbsoluteMaxBytes: 99 MB
        PreferredMaxBytes: 512 KB
     Kafka:
        Brokers:
-        - 10.0.1.XX:9092 (Kafka 주소)
+        - 10.0.1.62:9092
     Capabilities:
        <<: *OrdererCapabilities
     Organizations:
@@ -80,13 +78,13 @@ Channel: &ChannelDefaults
   Policies:
     Readers:
       Type: ImplicitMeta
-      Rule: “ANY Readers”
+      Rule: "ANY Readers"
     Writers:
       Type: ImplicitMeta
-      Rule: “ANY Writers”
+      Rule: "ANY Writers"
     Admins:
       Type: ImplicitMeta
-      Rule: “MAJORITY Admins”
+      Rule: "MAJORITY Admins"
   Capabilities:
     <<: *ChannelCapabilities
 
@@ -94,14 +92,13 @@ Application: &ApplicationDefaults
  Policies:
    Readers:
      Type: ImplicitMeta
-     Rule: “ANY Readers”
+     Rule: "ANY Readers"
    Writers:
      Type: ImplicitMeta
-     Rule: “ANY Writers”
-
+     Rule: "ANY Writers"
    Admins:
      Type: ImplicitMeta
-     Rule: “MAJORITY Admins”
+     Rule: "MAJORITY Admins"
  Organizations:
 
 Profiles:
@@ -130,4 +127,5 @@ Profiles:
           - *Org0
       Capabilities:
          <<: *ApplicationCapabilities
+
 
